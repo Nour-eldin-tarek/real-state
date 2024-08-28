@@ -56,7 +56,60 @@ body {
     font-weight: 800;
     letter-spacing: 1.3px;
 }
+
 /* End landing section */
+
+/* Start Cities Section */
+
+.cities-title h1  {
+    font-size: 1.9em;
+    font-weight: bold;
+}
+
+.city-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    height: 350px;
+    transition: 0.5s;
+}
+
+.city-card:hover {
+    transform: scale(1.05);
+}
+
+.city-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.city-card-overlay {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: white;
+    padding: 20px;
+    border-radius: 0 0 8px 8px;
+    height: 50%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+    text-align: center;
+}
+
+.city-card-overlay h3 {
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+.city-card-overlay p {
+    font-size: 1em;
+}
+
+/* End Cities Section */
 /* --------------------------------------## Services ##-------------------------------------- */
 
 
