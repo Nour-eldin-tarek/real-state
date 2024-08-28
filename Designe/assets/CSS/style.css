@@ -60,6 +60,9 @@ body {
 /* End landing section */
 
 /* Start Cities Section */
+.find-properties {
+    background-color: white;
+}
 
 .cities-title h1  {
     font-size: 1.9em;
