@@ -1,4 +1,62 @@
 /* --------------------------------------## Home ##------------------------------------------ */
+/* start Navbar section */
+@media(min-width:991px) {
+    .navbar .navbar-nav .nav-link::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    transform: translateX(-50%);
+    height: 2px;
+    background-color: var(--main-color);
+    visibility: hidden;
+    transition: 0.3s ease-in-out;
+}
+.navbar .nav-link:hover::before {
+    width: 100%;
+    visibility: visible;
+}
+}
+@media (max-width: 386px) {
+    .navbar-brand {
+        width: 200px;   
+    }
+}
+/* End Navbar section */
+
+/* start landing section */
+@media (max-width: 991px) {
+    .hero-section .container h1 {
+        font-size: 45px ;
+        font-weight: 600;
+    }
+    .hero-section .container{
+        top:-30px ;
+    }
+    .collapse {
+        background-color: rgba(0, 0, 0, 0.5);
+        text-align: center;
+    }
+    .navbar .navbar-nav::before {
+        content: "";
+        border-width: 15px;
+        border-style: solid;
+        border-color: transparent transparent rgba(0, 0, 0, 0.5) transparent;
+        position: absolute;
+        right: 10px;
+        top: -28.5px;
+    }   
+}
+/* End landing section */
+
+
+
+
+
+
+
+
 
 
 

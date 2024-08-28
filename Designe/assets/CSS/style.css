@@ -1,18 +1,62 @@
+/* Start Variables*/
+:root {
+    --main-color: #ff5a5f;
+}
+/* End Variables*/
 /* --------------------------------------## Body ##------------------------------------------ */
-
+body {
+    font-family: 'Nunito', sans-serif;
+}
 
 
 
 /* --------------------------------------## Home ##------------------------------------------ */
+/* start Navbar section */
+.navbar .navbar-nav .nav-link {
+    color: white;
+    font-weight: 300;
+    position: relative;
+    max-width: 400px;
+    margin: auto;
+}
 
+.navbar .navbar-nav .nav-link:active, 
+.navbar .navbar-nav .nav-link:focus,
+.navbar .navbar-nav .nav-link:hover{
+    color: var(--main-color);
+} 
+.navbar .navbar-toggler:focus {
+    box-shadow: none;
+}
+.navbar .navbar-toggler{
+    border: none;
+    font-size: 1.7rem;
+}
+.navbar .btn {
+    color: var(--main-color);
+    background-color: white;    
+}
+/* End Navbar section */
 
-
-
-
-
-
-
-
+/* start landing section */
+.hading {
+    background:linear-gradient(rgba(10, 10, 10, 0.5)
+    ,rgba(11, 11, 11, 0.3)),url(../Images/Other/1.jpg);
+    background-size:cover;
+    min-height: calc(100vh);
+}
+.hero-section .container {
+    position: relative;
+    z-index: 1;
+    height: 70vh;
+    text-align: center;
+}
+.hero-section .container h1 {
+    font-size: 50px ;
+    font-weight: 800;
+    letter-spacing: 1.3px;
+}
+/* End landing section */
 /* --------------------------------------## Services ##-------------------------------------- */
 
 
