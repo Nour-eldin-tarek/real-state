@@ -128,14 +128,6 @@ body {
 
 /* ################################### why-choose-us , articles-tips  ################################### */
 
-
-body {
-    font-family: "Nunito Sans", sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f7f7f7;
-}
-
 .why-choose-us, .articles-tips {
     padding: 0 130px; 
 }
@@ -153,7 +145,6 @@ body {
     color: #777;
 }
 
-
 .why-choose-us .features, 
 .articles-tips .articles {
     display: flex;
@@ -169,7 +160,7 @@ body {
     border-radius: 10px;
     width: 28%;
     text-align: center;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.122);
 }
 
 .feature img,
@@ -231,6 +222,41 @@ body {
     height: 30px;
     border-radius: 50%;
     margin-right: 10px;
+}
+
+
+@media (max-width: 1024px) {
+    .why-choose-us, .articles-tips {
+        padding: 0 50px;
+    }
+    
+    .feature, .article {
+        width: 45%;
+    }
+}
+
+@media (max-width: 768px) {
+    .why-choose-us, .articles-tips {
+        padding: 0 20px;
+    }
+    
+    .why-choose-us .features, 
+    .articles-tips .articles {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .feature, .article {
+        width: 80%;
+    }
+}
+
+@media (max-width: 480px) {
+    .feature, .article {
+        width: 100%;
+        padding: 20px;
+        margin: 10px 0;
+    }
 }
 /* ################################### End why-choose-us ,End articles-tips  ################################### */
 
@@ -466,15 +492,6 @@ footer .main-footer .coll .widget .footer-social ul li a {
 /* --------------------------------------## Bolg ##------------------------------------------ */
 
 
-body {
-    font-family: "Nunito Sans", sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background-color: #ffffff;
-}
-
-/* Header Section */
 header {
     display: flex;
     justify-content: space-between;
@@ -503,6 +520,7 @@ header nav ul li {
 .highlight-red {
     color: red;
 }
+
 header nav ul li a {
     text-decoration: none;
     color: #333;
@@ -526,6 +544,7 @@ header nav .register-btn:hover {
 .blog-section {
     padding: 50px 20px;
     background-color: #f3f0f0;
+    box-sizing: border-box;
 }
 
 .blog-section .container {
@@ -611,10 +630,8 @@ header nav .register-btn:hover {
     color: #ff5a5f;
     text-decoration: none;
     font-weight: bold;
-    
 }
 
-/* Pagination */
 .pagination {
     text-align: center;
     margin-top: 20px;
@@ -635,87 +652,6 @@ header nav .register-btn:hover {
     font-size: 18px;
 }
 
-/* Footer Section */
-footer {
-    background-color: #0a1d3b;
-    color: #fff;
-    padding: 50px 20px;
-}
-
-footer .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-}
-
-footer .footer-section {
-    width: 22%;
-}
-
-footer h4 {
-    font-size: 16px;
-    margin-bottom: 20px;
-    color: #fff;
-}
-
-footer p {
-    font-size: 14px;
-    color: #ccc;
-}
-
-footer .quick-links ul {
-    list-style: none;
-    padding: 0;
-}
-
-footer .quick-links ul li {
-    margin-bottom: 10px;
-}
-
-footer .quick-links ul li a {
-    text-decoration: none;
-    color: #ccc;
-}
-
-footer .quick-links ul li a:hover {
-    color: #ff5a5f;
-}
-
-footer .social-links a {
-    color: #fff;
-    font-size: 16px;
-    margin-right: 10px;
-}
-
-footer .social-links a:hover {
-    color: #ff5a5f;
-}
-
-footer .subscribe input[type="email"] {
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    margin-right: 10px;
-    width: 70%;
-}
-
-footer .subscribe button {
-    padding: 10px 20px;
-    background-color: #ff5a5f;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.footer-bottom {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 14px;
-    color: #ccc;
-    
-}
 .post-category {
     position: absolute;
     top: 730px;
@@ -725,6 +661,7 @@ footer .subscribe button {
     border-radius: 5px;
     font-size: 0.85em;
 }
+
 .page-number {
     display: inline-block;
     width: 40px; 
@@ -738,6 +675,60 @@ footer .subscribe button {
 
 .page-number.active {
     background-color: rgba(252, 44, 44, 0.763); 
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {
+    .blog-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    header .logo img {
+        width: 120px;
+        margin-bottom: 10px;
+    }
+    header nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0;
+    }
+    header nav ul li {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    .blog-grid {
+        grid-template-columns: 1fr;
+    }
+    .post-content .tag.business, 
+    .post-content .tag.construction {
+        top: auto;
+        left: auto;
+        position: relative;
+    }
+}
+
+@media (max-width: 480px) {
+    header .logo img {
+        width: 100px;
+    }
+    header nav ul {
+        align-items: center;
+    }
+    .post-content h3 {
+        font-size: 16px;
+    }
+    .post-content p {
+        font-size: 12px;
+    }
+    .pagination a {
+        font-size: 16px;
+    }
 }
 
 
