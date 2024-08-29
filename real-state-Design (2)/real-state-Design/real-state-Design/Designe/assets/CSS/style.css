@@ -1,0 +1,779 @@
+/* Start Variables*/
+:root {
+    --main-color: #ff5a5f;
+    --color-primary: #484848;
+    --color-secned: #8d8e91;
+    --second-font: 20px;
+}
+
+/* End Variables*/
+/* --------------------------------------## Body ##------------------------------------------ */
+body {
+    font-family: 'Nunito', sans-serif;
+}
+
+
+/* --------------------------------------## Home ##------------------------------------------ */
+
+/* ################################### start Navbar section ################################### */
+.navbar .navbar-nav .nav-link {
+    color: white;
+    font-weight: 300;
+    position: relative;
+    max-width: 400px;
+    margin: auto;
+}
+
+.navbar .navbar-nav .nav-link:active,
+.navbar .navbar-nav .nav-link:focus,
+.navbar .navbar-nav .nav-link:hover {
+    color: var(--main-color);
+}
+
+.navbar .navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.navbar .navbar-toggler {
+    border: none;
+    font-size: 1.7rem;
+}
+
+.navbar .btn {
+    color: var(--main-color);
+    background-color: white;
+}
+
+/* ################################### End Navbar section ################################### */
+
+/* ################################### start landing section ################################### */
+.hading {
+    background: linear-gradient(rgba(10, 10, 10, 0.5), rgba(11, 11, 11, 0.3)), url(../Images/Other/1.jpg);
+    background-size: cover;
+    min-height: calc(100vh);
+}
+
+.hero-section .container {
+    position: relative;
+    z-index: 1;
+    height: 70vh;
+    text-align: center;
+}
+
+.hero-section .container h1 {
+    font-size: 50px;
+    font-weight: 800;
+    letter-spacing: 1.3px;
+}
+
+/* ################################### End landing section ################################### */
+
+/* ################################### Start Cities Section ################################### */
+.find-properties {
+    background-color: white;
+    padding-top: 30px;
+}
+
+.cities-title h1 {
+    font-size: 1.9em;
+    font-weight: bold;
+}
+
+.city-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    height: 350px;
+    transition: 0.5s;
+}
+
+.city-card:hover {
+    transform: scale(1.05);
+}
+
+.city-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.city-card-overlay {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: white;
+    padding: 20px;
+    border-radius: 0 0 8px 8px;
+    height: 50%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+    text-align: center;
+}
+
+.city-card-overlay h3 {
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+.city-card-overlay p {
+    font-size: 1em;
+}
+
+/* ################################### End Cities Section ################################### */
+
+
+
+/* ################################### why-choose-us , articles-tips  ################################### */
+
+
+body {
+    font-family: "Nunito Sans", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+}
+
+.why-choose-us, .articles-tips {
+    padding: 0 130px; 
+}
+
+.why-choose-us h2, 
+.articles-tips h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.why-choose-us p, 
+.articles-tips p {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #777;
+}
+
+
+.why-choose-us .features, 
+.articles-tips .articles {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 40px;
+}
+
+.feature, 
+.article {
+    background-color: white;
+    padding: 30px;
+    margin: 15px;
+    border-radius: 10px;
+    width: 28%;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.feature img,
+.article img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.feature h3 {
+    margin-bottom: 10px;
+}
+
+.article h4 {
+    width: 20px;
+    height: auto;
+    color: rgb(255, 0, 0);
+    font-weight: 100;
+    }
+.feature p, 
+.article p {
+    color: #999;
+}
+
+.article img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.circle-background {
+    width: 100px;
+    height: 100px;
+    background-color: #fdece7;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 15px;
+}
+
+.circle-background img {
+    width: 50%;
+    height: 50%;
+}
+
+.article-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #777;
+}
+
+.article-footer img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+/* ################################### End why-choose-us ,End articles-tips  ################################### */
+
+
+
+
+
+
+/* ############################### our partner ###################################*/
+
+.our_partner {
+    padding-top: 50px;
+}
+
+.our_partner h1 {
+    text-align: center;
+    color: var(--color-primary);
+}
+
+.our_partner h2 {
+    text-align: center;
+    color: var(--color-secned);
+    font-size: var(--second-font);
+    font-weight: lighter;
+    font-family: 'Nunito', sans-serif;
+    margin: 20px 0px;
+}
+
+.our_partner_img {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 70px;
+}
+
+/* ############################### End our partner ###################################*/
+
+/* ################################### register footer ################################### */
+
+.register_footer {
+    margin-top: 40px;
+    color: #ffffff;
+    background-color: #ff5a5f;
+    padding: 50px;
+}
+
+.register_footer_head {
+    font-size: 45px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+}
+
+.register_footer_sec {
+    font-size: 20px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+}
+
+.register_footer .row {
+    margin-left: 10%;
+}
+
+.register_footer_head button {
+    background: #ff787c;
+    color: #ffffff;
+    font-weight: bold;
+    border-radius: 7px;
+    border: 0px;
+    padding: 20px 50px;
+    font-size: 25px;
+}
+
+.register_footer_head button:hover {
+    background-color: #f47d81;
+}
+
+/* ################################### End register footer ################################### */
+
+/* ################################### Footer ################################### */
+
+footer {
+    background-color: #24324a;
+    color: #818aa2;
+    line-height: 35px;
+}
+
+footer .main-footer {
+    display: grid;
+    grid-template-columns: 2fr 1.5fr 2fr 4fr;
+    gap: 20px;
+    padding: 45px 0px;
+    margin-left: 7%;
+}
+
+footer .main-footer .widget {
+    background: transparent;
+    padding: 0;
+    box-shadow: none;
+    border: none;
+}
+
+footer .main-footer .widget .widget-title {
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: 'Nunito', sans-serif;
+    line-height: 36px;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+footer .main-footer .widget a {
+    padding-left: 2px;
+    position: relative;
+    line-height: 40px;
+    font-family: 'Nunito', sans-serif;
+    text-decoration: none;
+    color: #818aa2;
+}
+
+footer .main-footer .widget a:hover {
+    color: #ffffff;
+}
+
+footer .main-footer .coll .widget .footer-social ul {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+footer .main-footer .coll .widget .footer-social ul li {
+    list-style: none;
+    display: inline-flex;
+}
+
+footer .main-footer .coll .widget .footer-social ul li a {
+    padding: 10px 10px;
+    display: inline-flex;
+    margin-bottom: 30px;
+}
+
+.footer_input {
+    background-color: #354765;
+    border: 2px solid transparent;
+    color: #ffffff;
+    padding: 10px 30px;
+    border-radius: 50px;
+}
+
+.footer_input:focus {
+    border-color: #ff5a5f;
+    outline: none;
+}
+
+.footer_sub_butt {
+    background-color: #354765;
+    border: 2px solid transparent;
+    padding: 7px 23px;
+    border-radius: 50%;
+    cursor: pointer;
+    align-items: center;
+    /* justify-content: center; */
+}
+
+.footer_sub_butt:hover {
+    background-color: rgb(92, 111, 146);
+    border-color: #ff5a5f;
+}
+
+.footer_sub_butt span {
+    color: #fff;
+    /* Arrow color */
+    font-size: 30px;
+}
+
+.copy-rights {
+    position: relative;
+    padding: 20px 0;
+    background: #1d293e;
+    text-align: center;
+}
+
+.copy-rights a {
+    text-decoration: none;
+    color: #818aa2;
+    margin-left: 10px;
+}
+
+.copy-rights a:hover {
+    color: #ffffff;
+}
+
+.back-to-top {
+    background-color: #354765;
+    color: white;
+    border: none;
+    padding: 10px 21px;
+    border-radius: 50px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: none;
+    transition: opacity 0.3s;
+}
+
+.back-to-top:hover {
+    background-color: #2c3e50;
+    /* Change to a different color on hover */
+}
+
+/* ################################### End Footer ################################### */
+
+/* --------------------------------------## Services ##-------------------------------------- */
+
+
+
+
+
+
+
+
+
+/* --------------------------------------## About us ##-------------------------------------- */
+
+
+
+
+
+
+
+
+
+/* --------------------------------------## Bolg ##------------------------------------------ */
+
+
+body {
+    font-family: "Nunito Sans", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #ffffff;
+}
+
+/* Header Section */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(214, 6, 6, 0.1);
+}
+
+header .logo img {
+    width: 150px;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    margin: 5px;
+    padding: 5px;
+}
+
+header nav ul li {
+    margin-right: 20px;
+    margin-top: 8px;
+}
+
+.highlight-red {
+    color: red;
+}
+header nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+header nav .register-btn {
+    background-color: #ff5a5f;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+header nav .register-btn:hover {
+    background-color: #ff2a2f;
+}
+
+/* Blog Section */
+.blog-section {
+    padding: 50px 20px;
+    background-color: #f3f0f0;
+}
+
+.blog-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.blog-section h2 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 40px;
+    width: 50px;
+    color: #333;
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.blog-post {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.blog-post img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.post-content {
+    padding: 20px;
+}
+
+.post-content .tag {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 12px;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.post-content .tag.business {
+    background-color: red;
+    position: absolute;
+    top: 290px;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.85em;
+}
+
+.post-content .tag.construction {
+    position: absolute;
+    top: 290px;
+    left: 580px;
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.85em;
+}
+
+.post-content h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.post-content p {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+.post-content .read-more {
+    font-size: 14px;
+    color: #ff5a5f;
+    text-decoration: none;
+    font-weight: bold;
+    
+}
+
+/* Pagination */
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination a {
+    margin: 0 5px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.pagination a.active {
+    color: #ff5a5f;
+}
+
+.pagination a.prev, .pagination a.next {
+    font-size: 18px;
+}
+
+/* Footer Section */
+footer {
+    background-color: #0a1d3b;
+    color: #fff;
+    padding: 50px 20px;
+}
+
+footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+footer .footer-section {
+    width: 22%;
+}
+
+footer h4 {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+footer p {
+    font-size: 14px;
+    color: #ccc;
+}
+
+footer .quick-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+footer .quick-links ul li {
+    margin-bottom: 10px;
+}
+
+footer .quick-links ul li a {
+    text-decoration: none;
+    color: #ccc;
+}
+
+footer .quick-links ul li a:hover {
+    color: #ff5a5f;
+}
+
+footer .social-links a {
+    color: #fff;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+footer .social-links a:hover {
+    color: #ff5a5f;
+}
+
+footer .subscribe input[type="email"] {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+    width: 70%;
+}
+
+footer .subscribe button {
+    padding: 10px 20px;
+    background-color: #ff5a5f;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #ccc;
+    
+}
+.post-category {
+    position: absolute;
+    top: 730px;
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.85em;
+}
+.page-number {
+    display: inline-block;
+    width: 40px; 
+    height: 40px; 
+    line-height: 40px; 
+    text-align: center; 
+    border-radius: 50%; 
+    background-color: white; 
+    color: rgb(0, 0, 0); 
+}
+
+.page-number.active {
+    background-color: rgba(252, 44, 44, 0.763); 
+}
+
+
+
+
+
+
+
+/* --------------------------------------## Blog Details ##---------------------------------- */
+
+
+
+
+
+
+
+
+
+/* --------------------------------------## Property ##-------------------------------------- */
+
+
+
+
+
+
+
+
+
+/* --------------------------------------## Property Details ##------------------------------ */
+
+
+
+
+
+
+
+
+
+/* --------------------------------------## Contact us ##------------------------------------ */
