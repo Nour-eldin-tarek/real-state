@@ -59,6 +59,47 @@
 
 /* ################################### End landing section ################################### */
 
+
+/*  ################################### why-choose-us , articles-tips  ################################### */ 
+
+@media (max-width: 1024px) {
+    .why-choose-us, .articles-tips {
+        padding: 0 50px;
+    }
+    
+    .feature, .article {
+        width: 45%;
+    }
+}
+
+@media (max-width: 768px) {
+    .why-choose-us, .articles-tips {
+        padding: 0 20px;
+    }
+    
+    .why-choose-us .features, 
+    .articles-tips .articles {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .feature, .article {
+        width: 80%;
+    }
+}
+
+@media (max-width: 480px) {
+    .feature, .article {
+        width: 100%;
+        padding: 20px;
+        margin: 10px 0;
+    }
+}
+
+
+/*  ################################### End why-choose-us , articles-tips  ################################### */ 
+
+
 /* ############################### our partner ###################################*/
 
 @media (max-width: 768px) {
@@ -172,6 +213,58 @@
 
 
 
+@media (max-width: 1200px) {
+    .blog-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    header .logo img {
+        width: 120px;
+        margin-bottom: 10px;
+    }
+    header nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0;
+    }
+    header nav ul li {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    .blog-grid {
+        grid-template-columns: 1fr;
+    }
+    .post-content .tag.business, 
+    .post-content .tag.construction {
+        top: auto;
+        left: auto;
+        position: relative;
+    }
+}
+
+@media (max-width: 480px) {
+    header .logo img {
+        width: 100px;
+    }
+    header nav ul {
+        align-items: center;
+    }
+    .post-content h3 {
+        font-size: 16px;
+    }
+    .post-content p {
+        font-size: 12px;
+    }
+    .pagination a {
+        font-size: 16px;
+    }
+}
 
 
 

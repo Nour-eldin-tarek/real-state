@@ -124,6 +124,121 @@ body {
 
 /* ################################### End Cities Section ################################### */
 
+
+
+/* ################################### why-choose-us , articles-tips  ################################### */
+
+
+.why-choose-us, .articles-tips {
+    padding: 0 130px; 
+}
+
+.why-choose-us h2, 
+.articles-tips h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.why-choose-us p, 
+.articles-tips p {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #777;
+}
+
+.why-choose-us .features, 
+.articles-tips .articles {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 40px;
+}
+
+.feature, 
+.article {
+    background-color: white;
+    padding: 30px;
+    margin: 15px;
+    border-radius: 10px;
+    width: 28%;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.122);
+}
+
+.feature img,
+.article img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.feature h3 {
+    margin-bottom: 10px;
+    
+}
+.article h3 {
+    font-size: 17px;
+}
+
+.article h4 {
+    width: 20px;
+    height: auto;
+    color: rgb(255, 0, 0);
+    font-weight: 100;
+    font-size: 12px;
+    }
+.feature p, 
+.article p {
+    color: #999;
+}
+
+.article img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.circle-background {
+    width: 100px;
+    height: 100px;
+    background-color: #fdece7;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 15px;
+}
+
+.circle-background img {
+    width: 50%;
+    height: 50%;
+}
+
+.article-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #777;
+}
+
+.article-footer img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+
+
+/* ################################### End why-choose-us ,End articles-tips  ################################### */
+
+
+
+
+
+
 /* ############################### our partner ###################################*/
 
 .our_partner {
@@ -349,6 +464,192 @@ footer .main-footer .coll .widget .footer-social ul li a {
 
 
 /* --------------------------------------## Bolg ##------------------------------------------ */
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(214, 6, 6, 0.1);
+}
+
+header .logo img {
+    width: 150px;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    margin: 5px;
+    padding: 5px;
+}
+
+header nav ul li {
+    margin-right: 20px;
+    margin-top: 8px;
+}
+
+.highlight-red {
+    color: red;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+header nav .register-btn {
+    background-color: #ff5a5f;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+header nav .register-btn:hover {
+    background-color: #ff2a2f;
+}
+
+/* Blog Section */
+.blog-section {
+    padding: 50px 20px;
+    background-color: #f3f0f0;
+    box-sizing: border-box;
+}
+
+.blog-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.blog-section h2 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 40px;
+    width: 50px;
+    color: #333;
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.blog-post {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.blog-post img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.post-content {
+    padding: 20px;
+}
+
+.post-content .tag {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 12px;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.post-content .tag.business {
+    background-color: red;
+    position: absolute;
+    top: 290px;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.85em;
+}
+
+.post-content .tag.construction {
+    position: absolute;
+    top: 290px;
+    left: 580px;
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.85em;
+}
+
+.post-content h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.post-content p {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+.post-content .read-more {
+    font-size: 14px;
+    color: #ff5a5f;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination a {
+    margin: 0 5px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.pagination a.active {
+    color: #ff5a5f;
+}
+
+.pagination a.prev, .pagination a.next {
+    font-size: 18px;
+}
+
+.post-category {
+    position: absolute;
+    top: 730px;
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.85em;
+}
+
+.page-number {
+    display: inline-block;
+    width: 40px; 
+    height: 40px; 
+    line-height: 40px; 
+    text-align: center; 
+    border-radius: 50%; 
+    background-color: white; 
+    color: rgb(0, 0, 0); 
+}
+
+.page-number.active {
+    background-color: rgba(252, 44, 44, 0.763); 
+}
 
 
 
