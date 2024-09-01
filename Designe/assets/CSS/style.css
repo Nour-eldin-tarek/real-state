@@ -569,16 +569,17 @@ header nav .register-btn:hover {
 .post-content .tag.business {
     background-color: red;
     position: absolute;
-    top: 290px;
+    top: 259px;
     color: white;
     padding: 5px 10px;
     border-radius: 5px;
     font-size: 0.85em;
 }
 
+
 .post-content .tag.construction {
     position: absolute;
-    top: 290px;
+    top: 259px;
     left: 580px;
     background-color: red;
     color: white;
@@ -607,6 +608,7 @@ header nav .register-btn:hover {
 }
 
 .pagination {
+    display: block;
     text-align: center;
     margin-top: 20px;
 }
@@ -628,7 +630,7 @@ header nav .register-btn:hover {
 
 .post-category {
     position: absolute;
-    top: 730px;
+    top: 693px;
     background-color: red;
     color: white;
     padding: 5px 10px;
@@ -651,9 +653,16 @@ header nav .register-btn:hover {
     background-color: rgba(252, 44, 44, 0.763); 
 }
 
+.blog-home {
+   color: rgb(111, 111, 160);
+   font-size: 15px;
 
+}
 
-
+.blog-text {
+    color: red;
+    font-size: 15px;
+}
 
 
 
