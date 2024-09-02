@@ -1,0 +1,90 @@
+/* Start Variables*/
+:root {
+    --main-color: #ff5a5f;
+}
+/* End Variables*/
+
+body {
+    font-family: 'Nunito', sans-serif;
+}
+
+
+.navbar .navbar-nav .nav-link {
+    color: #535353;
+    font-weight: 300;
+    position: relative;
+    max-width: 400px;
+    margin: auto;
+}
+
+.navbar .navbar-nav .nav-link:active, 
+.navbar .navbar-nav .nav-link:focus,
+.navbar .navbar-nav .nav-link:hover{
+    color: var(--main-color);
+} 
+.navbar .navbar-toggler:focus {
+    box-shadow: none;
+}
+.navbar .navbar-toggler{
+    border: none;
+    font-size: 1.7rem;
+}
+.register_footer .btn{
+        color: white;
+        background-color: #ff787c;
+        width: 200px;
+}
+.container {
+    color: #535353;
+    max-width: 73%;
+    margin: auto;
+}
+@media (max-width: 991px) {
+    .navbar .navbar-nav .nav-link{
+        color:#535353;
+    }   
+}
+@media (max-width: 450px) {
+    .container {
+        max-width: 90%;
+    }
+}
+/* End Navbar section */
+/* Start Contact Us section */
+.contact-us {
+    background-color: #f7f7f7;
+}
+.heading {
+    background:linear-gradient(rgba(0, 0, 0, 0.5)
+    ,rgba(0, 0, 0, 0.5)),url(../Images/Other/inner-pagebg.17d731a1.jpg);
+    height: 52vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content p {
+    font-size: 15px;
+
+}
+.content h4 {
+    color: #484848;
+}
+.content .list-unstyled i {
+    margin-top: 3px;
+    color: #484848;
+    background-color: #f7f7f7;
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content .btn {
+    color: white;
+    background-color: var(--main-color);
+    width: 200px;
+}
+/* End Contact Us section */
+
+

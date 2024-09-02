@@ -1,0 +1,89 @@
+/* Start Variables*/
+:root {
+    --main-color: #ff5a5f;
+}
+/* End Variables*/
+
+body {
+    font-family: 'Nunito', sans-serif;
+}
+
+
+.navbar .navbar-nav .nav-link {
+    color: #535353;
+    font-weight: 300;
+    position: relative;
+    max-width: 400px;
+    margin: auto;
+}
+
+.navbar .navbar-nav .nav-link:active, 
+.navbar .navbar-nav .nav-link:focus,
+.navbar .navbar-nav .nav-link:hover{
+    color: var(--main-color);
+} 
+.navbar .navbar-toggler:focus {
+    box-shadow: none;
+}
+.navbar .navbar-toggler{
+    border: none;
+    font-size: 1.7rem;
+}
+.register_footer .btn{
+        color: white;
+        background-color: #ff787c;
+        width: 200px;
+}
+.container {
+    color: #535353;
+    max-width: 73%;
+    margin: auto;
+}
+@media (max-width: 450px) {
+    .container {
+        max-width: 90%;
+    }
+}
+/* End Navbar section */
+/* Start Contact Us section */
+.heading {
+    background:linear-gradient(rgba(0, 0, 0, 0.5)
+    ,rgba(0, 0, 0, 0.5)),url(../Images/Other/inner-pagebg.17d731a1.jpg);
+    height: 52vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-us .about-content {
+    margin-top: 130px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+@media (max-width: 991px) {
+    .about-us .about-content {
+        flex-direction: column;
+    }
+}
+.about-us .image img {
+    width: 300px;
+    height: 420px;
+}
+.about-us .text h5{
+    font-weight: bold;
+    font-size: 20px;
+}
+.about-us .text p {
+    padding-top: 30px;
+    font-size: 13px;
+    color: #714871;
+}
+.text {
+    padding-right: 15px;
+    flex: 1;
+}
+
+/* End Contact Us section */
+/*############## Note in footer ##############*/

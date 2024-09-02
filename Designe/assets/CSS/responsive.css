@@ -41,20 +41,11 @@
         top: -30px;
     }
 
-    .collapse {
+    .navbar {
         background-color: rgba(0, 0, 0, 0.5);
         text-align: center;
     }
 
-    .navbar .navbar-nav::before {
-        content: "";
-        border-width: 15px;
-        border-style: solid;
-        border-color: transparent transparent rgba(0, 0, 0, 0.5) transparent;
-        position: absolute;
-        right: 10px;
-        top: -28.5px;
-    }
 }
 
 /* ################################### End landing section ################################### */
