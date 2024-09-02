@@ -191,12 +191,31 @@
 
 /* --------------------------------------## Services ##-------------------------------------- */
 
+@media (max-width: 480px) {
+    .overlayed-image img {
+        height: 200px;
+    }
 
+    .overlay-text {
+        margin-top: 60px;
+        margin-left: 60px;
+    }
+}
 
+@media (max-width: 850px) {
+    .overlay-text {
+        margin-top: 80px;
+        margin-left: 100px;
+    }
 
+    .service-card img {
+        height: 300px;
+    }
 
-
-
+    .service-card p {
+        font-size: 1.1em;
+    }
+}
 
 
 /* --------------------------------------## About us ##-------------------------------------- */
