@@ -295,6 +295,74 @@
 
 /* --------------------------------------## Property ##-------------------------------------- */
 
+@media (max-width: 1200px) {
+    .col-md-8 {
+        width: 66.66%;
+    }
+
+    .col-md-3 {
+        width: 25%;
+    }
+    .Featured_Propertiesr {
+        display: none;
+    }
+}
+
+@media (max-width: 992px) {
+
+    .col-md-8,
+    .col-md-3 {
+        width: 100%;
+    }
+
+    .property_side_contant {
+        margin-right: 0;
+    }
+    
+}
+
+@media (max-width: 768px) {
+    /* .col-6 {
+        width: 100%;
+    } */
+
+    .property_cards {
+        width: 100%;
+    }
+
+    .property_button_1,
+    .property_button_2 {
+        font-size: 12px;
+        padding: 4px 8px;
+    }
+
+    .property_card_title {
+        font-size: 18px;
+    }
+
+}
+
+@media (max-width: 576px) {
+
+    .property_main_contant,
+    .property_side_contant {
+        padding: 15px;
+    }
+
+    .property_cards img {
+        height: 200px;
+    }
+
+    .property_card_title {
+        font-size: 16px;
+    }
+
+    .property_card_location,
+    .property_card_code,
+    .property_card_footer {
+        font-size: 12px;
+    }
+}
 
 
 
