@@ -1,13 +1,12 @@
-import React from 'react';
-import './Home.css';
-import Cities from './Cities';
-
+import React from "react";
+import "./Home.css";
+import Cities from "./Cities";
+import Landing from "./Landing";
 function Home() {
   return (
     <>
-    
-    <Cities />
-
+      <Landing />
+      <Cities />
     </>
   );
 }
