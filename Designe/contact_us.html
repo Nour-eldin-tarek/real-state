@@ -7,6 +7,10 @@
     <title>Find House | Contact us</title>
     <!-- Site icon -->
     <link rel="shortcut icon" href="./assets/Images/Logos/logo.png">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,400i,500,600,700&amp;display=swap" rel="stylesheet"
+    data-optimized-fonts="true">
     <!-- Render All Elements Normally -->
     <link rel="stylesheet" href="./assets/CSS/normalize.css">
     <!--Bootstrap -->
@@ -18,10 +22,6 @@
     <link rel="stylesheet" href="./assets/CSS/style.css">
     <link rel="stylesheet" href="./assets/CSS/contact_us.css">
     <link rel="stylesheet" href="./assets/CSS/responsive.css">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link href="https://fonts.googleapis.com/css?family=Nunito:400,400i,500,600,700&amp;display=swap" rel="stylesheet"
-        data-optimized-fonts="true">
 </head>
 <body>
         <!-- Start Navbar section -->
@@ -60,9 +60,9 @@
           <!-- End Navbar section -->
           <!-- Start Contact Us section -->
     <section class="contact-us">
-        <div class="heading mb-5">
+        <div class="contactus-header mb-5">
             <div class="container">
-                <div class="heading-text col-lg-12 position-relative text-white">
+                <div class="heading-text p-3 col-lg-12 position-relative text-white">
                     <p class="mb-0 fw-bold text-white ">Home / Contact  </p>
                     <h1 class="display-5 fw-bold">Contact Us</h1>
                 </div>
@@ -72,34 +72,34 @@
         <div class="content">
           <div class="container">
             <div class="row justify-content-around ">
-              <div class="col-lg-7 bg-white p-4 mb-5 rounded-3">
+              <div class="col-lg-7 bg-white p-3 mb-5 rounded-3">
                 <h6 class="pb-2 fw-bold">Send Us An Email</h6>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, amet. Nostrum nisi repellendus illo, placeat  reprehenderit. Atque officiis modi esse! Nisi adipisci eum iusto qui 
                   magni quasi</p>
-                <form class="row g-3">
+                <form class="row" method="post" action="https://formsubmit.co/your@email.com">
                   <div class="col-lg-6 mb-12">
                   <label for=" exampleFormControlInput1" class="form-label"></label>
-                  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Name">
+                  <input type="text" class="form-control" id="exampleFormControlInput1"  name="name" required placeholder="Name">
                 </div>
                 <div class="col-lg-6 mb-12">
                   <label for=" exampleFormControlInput1" class="form-label"></label>
-                  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Email">
+                  <input type="email" class="form-control" id="exampleFormControlInput1" name="email" required placeholder="Email">
                 </div>
                 <div class="col-lg-6 mb-12">
                   <label for=" exampleFormControlInput1" class="form-label"></label>
-                  <input type="phone" class="form-control" id="exampleFormControlInput1" placeholder="Phone">
+                  <input type="tel" class="form-control" id="exampleFormControlInput1" name="phone" required placeholder="Phone">
                 </div>
                 <div class="col-lg-6 mb-12">
                   <label for=" exampleFormControlInput1" class="form-label"></label>
-                  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Subject">
+                  <input type="text" class="form-control" id="exampleFormControlInput1" name="Subject" required placeholder="Subject">
                 </div>
                 <div class="mb-3">
                   <label for="exampleFormControlTextarea1" class="form-label"></label>
-                  <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Your Message" rows="6"></textarea>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Your Message" name="message" required rows="6"></textarea>
                 </div>
-                </form>
-                <submit class="btn">Send Massage</submit>
-              </div>
+                <button class="btn" type="submit">Send Massage</button>
+              </form> 
+            </div>
               <div class="col-lg-4 bg-white p-4 mb-5 rounded-3" >
                 <h6 class="pb-2 fw-bold ">Contact Us </h6>
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur ad vero ullam, nihil nulla unde .</p>
@@ -238,9 +238,10 @@
         </div>
       </div>
     </footer> 
-    <!-- Java script Files -->
-    <script src="./assets/JS/main.js"></script>
+
     <!--Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <!-- Java script Files -->
+        <script src="./assets/JS/main.js"></script>
 </body>
 </html>

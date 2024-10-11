@@ -31,7 +31,7 @@ body {
 }
 .register_footer .btn{
         color: white;
-        background-color: #ff787c;
+        background-color: var(--main-color);
         width: 200px;
 }
 .container {
@@ -46,10 +46,13 @@ body {
 }
 /* End Navbar section */
 /* Start Contact Us section */
-.heading {
+.aboutus-header 
+{
     background:linear-gradient(rgba(0, 0, 0, 0.5)
     ,rgba(0, 0, 0, 0.5)),url(../Images/Other/inner-pagebg.17d731a1.jpg);
-    height: 52vh;
+    height: 45vh;
+    background-size: cover;
+    background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
