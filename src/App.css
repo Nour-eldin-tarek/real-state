@@ -227,4 +227,24 @@ footer .main-footer .coll .widget .footer-social ul li a {
   /* Change to a different color on hover */
 }
 
+@media (max-width: 992px) {
+  footer .main-footer {
+      grid-template-columns: 1fr;
+      text-align: center;
+  }
+
+  footer .main-footer .widget {
+      margin-bottom: 20px;
+  }
+
+  .copy-rights .row {
+      display: block;
+      text-align: center;
+  }
+
+  .copy-rights .col {
+      margin-bottom: 10px;
+  }
+}
+
 /* ################################### End Footer ################################### */
