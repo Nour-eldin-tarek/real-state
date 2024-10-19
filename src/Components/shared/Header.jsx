@@ -7,6 +7,7 @@ import ContactUs from "../pages/ContactUs/ContactUs";
 import Property from "../pages/Property/Property";
 import Services from "../pages/Services/Services";
 import Blog from "../pages/Blog/Blog";
+import BlogDetails from "../pages/BlogDetails/BlogDetails";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -18,11 +19,13 @@ function Header() {
       <Navbar expand="lg" className="bg-body-white shadow-sm">
         <Container fluid>
           <Navbar.Brand href="#">
-            <img className="w-75" src={logo}  alt="logo" />
+            <Link to="/">
+              <img className="w-75" src={logo} alt="logo" />
+            </Link>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
-            <Nav className="ms-auto my-2 my-lg-0" >
+            <Nav className="ms-auto my-2 my-lg-0">
               <Link className="nav-link p-2 p-lg-3 active" to="/">
                 Home
               </Link>
@@ -46,13 +49,14 @@ function Header() {
         </Container>
       </Navbar>
       <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/property" element={<Property />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/blog" element={<Blog />} />
-              <Route path="/aboutus" element={<AboutUs />} />
-              <Route path="/contactus" element={<ContactUs />} />
-            </Routes>
+        <Route path="/property" element={<Property />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/aboutus" element={<AboutUs />} />
+        <Route path="/contactus" element={<ContactUs />} />
+        <Route path="/blogdetails" element={<BlogDetails />} />
+        <Route path="/" element={<Home />} />
+      </Routes>
     </Router>
   );
 }

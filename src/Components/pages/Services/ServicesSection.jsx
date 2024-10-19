@@ -44,19 +44,19 @@ function ServicesSection() {
 
     return (
         <>
-            <div className="container">
+            <div className="container services">
+                <div className="row">
                 {
                     ServicesData.map((services)=>
-                    <div className="row">
                     <div className="col-lg-4">
                         <div className="service-card">
                             <img src={services.image} alt="Service" />
                             <p>{services.title}</p>
                         </div>
                     </div>
-                    </div>
                     )
                 }
+                </div>
             </div>
         </>
     )
