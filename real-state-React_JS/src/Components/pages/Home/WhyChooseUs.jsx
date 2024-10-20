@@ -61,7 +61,7 @@ const ArticlesTips = () => {
             imgSrc: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR6f6tu4ilZz76lCRBGYdiy3aR5uccb3F7Pmu3_v_64aAHWRhRe",
             alt: "House 2",
             category: "Construction",
-            title: "Bedroom Colors You will Never Regret",
+            title: "Bedroom Colors You will Never Regret very good",
             authorImg: "https://media.voltron.alhurra.com/Drupal/01live-106/styles/sourced/s3/2019-12/2EF0F78E-D4DA-423A-9037-DEBDD029B730.jpg?itok=mt37zUal",
             author: "Ali Tufan",
             date: "7 August 2022",
