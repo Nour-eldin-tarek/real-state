@@ -4,6 +4,7 @@ Joi.objectId = require("joi-objectId")(Joi);
 const cors = require('cors');
 
 const Service = require("./routes/Service");
+const Property = require("./routes/Property");
 
 const express = require("express");
 const app = express();
@@ -31,7 +32,8 @@ app.use('/uploads', express.static('uploads'));
 
 app.use(cors());
 /**************************************************************************************************/
-app.use("/services", Service);  // <- Changed "Service" to "services"
+app.use("/services", Service);
+app.use("/Properties", Property);
 /**************************************************************************************************/
 
 // Serve AdminLTE files

@@ -4,84 +4,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Properties</title>
+    <title>Add Property</title>
     <link rel="stylesheet" href="/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="/adminlte/dist/css/adminlte.min.css">
 </head>
 
 <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
-    <!--begin::App Wrapper-->
     <div class="app-wrapper">
-        <!--begin::Header-->
         <nav class="app-header navbar navbar-expand bg-body" style="min-height: 50px;">
-            <div class="container-fluid">
-                <!-- Add any header elements here -->
-            </div>
+            <div class="container-fluid"></div>
         </nav>
-        <!--end::Header--> 
 
-        <!--begin::Sidebar-->
         <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
             <div class="sidebar-brand">
                 <a href="/properties" class="brand-link">
-                    <span class="brand-text fw-light">AdminLTE 4</span>
+                    <span class="brand-text fw-light">Admin Properties</span>
                 </a>
             </div>
+
             <div class="sidebar-wrapper">
                 <nav class="mt-2">
-                    <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
+                    <ul class="nav sidebar-menu flex-column" role="menu" data-accordion="false">
                         <li class="nav-item">
                             <a href="/properties" class="nav-link">
-                                <i class="nav-icon bi bi-speedometer"></i>
-                                <p>
-                                    Properties
-                                    <i class="nav-arrow bi bi-chevron-right"></i>
-                                </p>
+                                <i class="nav-icon bi bi-house"></i>
+                                <p>Properties</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/properties/new" class="nav-link">
-                                <i class="nav-icon bi bi-plus-circle"></i>
-                                <p>Add Property</p>
+                            <a href="/services" class="nav-link">
+                                <i class="nav-icon bi bi-gear"></i>
+                                <p>Services</p>
                             </a>
                         </li>
                     </ul>
                 </nav>
             </div>
         </aside>
-        <!--end::Sidebar--> 
 
-        <!--begin::App Main-->
         <main class="app-main">
             <div class="app-content-header">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-6">
-                            <h3 class="mb-0">Adding Property</h3>
+                            <h3 class="mb-0">Add Property</h3>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-end">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">
-                                    Adding Property
-                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">Add Property</li>
                             </ol>
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="app-content">
                 <div class="container-fluid">
                     <div class="row g-4">
                         <div class="col-md-6">
                             <div class="card card-primary card-outline mb-4">
                                 <div class="card-header">
-                                    <div class="card-title">Adding Property</div>
+                                    <div class="card-title">New Property</div>
                                 </div>
-                                <form action="/properties" method="POST" enctype="multipart/form-data">
-                                    <div class="card-body">
 
-                                        <!-- Display Error Messages -->
+                                <form id="addPropertyForm" enctype="multipart/form-data" method="POST" action="/properties"> <!-- Updated action -->
+                                    <div class="card-body">
                                         <% if (errors.length > 0) { %>
                                             <div class="alert alert-danger">
                                                 <ul>
@@ -91,35 +79,56 @@
                                                 </ul>
                                             </div>
                                         <% } %>
+
                                         <div class="mb-3">
-                                            <div class="form-group">
-                                                <label for="category">Category</label>
-                                                <input type="text" class="form-control" id="category" name="category"
-                                                    required minlength="3" value="<%= property.category || '' %>">
-                                            </div>
+                                            <label for="category">Category</label>
+                                            <input type="text" class="form-control" id="category" name="category" required>
                                         </div>
 
                                         <div class="mb-3">
-                                            <div class="form-group">
-                                                <label for="city">City</label>
-                                                <input type="text" class="form-control" id="city" name="city"
-                                                    required minlength="3" value="<%= property.city || '' %>">
-                                            </div>
+                                            <label for="name">Property Name</label>
+                                            <input type="text" class="form-control" id="name" name="name" required minlength="5" maxlength="255">
                                         </div>
 
                                         <div class="mb-3">
-                                            <div class="form-group">
-                                                <label for="propertyNo">Property No</label>
-                                                <input type="text" class="form-control" id="propertyNo" name="propertyNo"
-                                                    required minlength="1" value="<%= property.propertyNo || '' %>">
-                                            </div>
+                                            <label for="location">Location</label>
+                                            <input type="text" class="form-control" id="location" name="location" required>
                                         </div>
 
                                         <div class="mb-3">
-                                            <div class="form-group">
-                                                <label for="img">Property Image</label>
-                                                <input type="file" class="form-control-file" id="img" name="img">
-                                            </div>
+                                            <label for="author">Author</label>
+                                            <input type="text" class="form-control" id="author" name="author" required>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="img_author">Author Image</label>
+                                            <input type="file" class="form-control-file" id="img_author" name="img_author" required> <!-- Added author image upload -->
+                                        </div>
+
+
+                                        <div class="mb-3">
+                                            <label for="BedsNo">Number of Beds</label>
+                                            <input type="number" class="form-control" id="BedsNo" name="BedsNo" required>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="BathsNo">Number of Baths</label>
+                                            <input type="number" class="form-control" id="BathsNo" name="BathsNo" required>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="sqFt">Square Feet</label>
+                                            <input type="number" class="form-control" id="sqFt" name="sqFt" required>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="price">Price</label>
+                                            <input type="number" class="form-control" id="price" name="price" required>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="img">Property Image</label>
+                                            <input type="file" class="form-control-file" id="img" name="img" required> <!-- Added required attribute -->
                                         </div>
 
                                         <div class="mb-3">
@@ -127,26 +136,14 @@
                                         </div>
                                     </div>
                                 </form>
-                                <!--end::Form-->
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--end::App Content-->
         </main>
-        <!--end::App Main--> 
-
-        <!--begin::Footer-->
-        <footer class="app-footer">
-            <div class="float-end d-none d-sm-inline">Anything you want</div>
-            <strong>
-                Copyright &copy; 2014-2024&nbsp;
-                <a href="https://adminlte.io" class="text-decoration-none">AdminLTE.io</a>.
-            </strong>
-            All rights reserved.
-        </footer>
     </div>
+
     <script src="/adminlte/dist/js/adminlte.min.js"></script>
 </body>
 

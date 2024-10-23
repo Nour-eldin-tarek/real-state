@@ -22,10 +22,9 @@ const imagesSchema = new mongoose.Schema({
         maxlength: 100,
     },
     img: {
-        data: Buffer,
+        path: String,
         contentType: String,
-        required: true,
-    }
+    },
 });
 
 // Images model

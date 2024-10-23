@@ -1,80 +1,50 @@
-const Joi = require("joi");
 const mongoose = require("mongoose");
-
-// Author schema
-const authorSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true,
-        trim: true,
-        minlength: 2,
-        maxlength: 50,
-    },
-    profileImg: {
-        data: Buffer,
-        contentType: String
-    }
-});
 
 // Property schema
 const propertySchema = new mongoose.Schema({
     category: {
         type: String,
         required: true,
-        minlength: 3,
-        maxlength: 100,
     },
     name: {
         type: String,
         required: true,
-        trim: true,
-        minlength: 5,
-        maxlength: 225,
+        minlength: 5, // Add any necessary validations
+        maxlength: 255,
     },
     location: {
         type: String,
         required: true,
-        minlength: 5,
-        maxlength: 255,
     },
     author: {
-        type: authorSchema,
-        required: true
+        type: String,
+        required: true, // Adjust as necessary
+    },
+    img_author: {
+        path: String,
+        contentType: String,
     },
     BedsNo: {
         type: Number,
         required: true,
-        min: 1,
     },
     BathsNo: {
         type: Number,
         required: true,
-        min: 1,
     },
     sqFt: {
         type: Number,
         required: true,
-        min: 100,
     },
     price: {
         type: Number,
         required: true,
-        min: 0,
     },
     img: {
-        data: Buffer,
+        path: String,
         contentType: String,
-        required: true
     },
-    isPublished: {
-        type: Boolean,
-        default: false,  // Removed 'required: true'
-    },
-    date: {
-        type: Date,
-        default: Date.now,
-    }
-});
+}, { timestamps: true }); // Optional: adds createdAt and updatedAt timestamps
 
 // Property model
 const Property = mongoose.model("Property", propertySchema);
@@ -82,15 +52,15 @@ const Property = mongoose.model("Property", propertySchema);
 // Joi validation schema for property creation
 function validateProperty(property) {
     const schema = Joi.object({
-        category: Joi.string().min(3).required(),
-        name: Joi.string().min(5).required(),
-        location: Joi.string().min(5).required(),
-        BedsNo: Joi.number().min(1).required(),
-        BathsNo: Joi.number().min(1).required(),
-        sqFt: Joi.number().min(100).required(),
-        price: Joi.number().min(0).required(),
-        isPublished: Joi.boolean().required(),
-        authorId: Joi.objectId().required(),  // Assuming the author will have an ID reference
+        category: Joi.string().required(),
+        name: Joi.string().min(5).max(255).required(),
+        location: Joi.string().required(),
+        author: Joi.string().required(),
+        BedsNo: Joi.number().required(),
+        BathsNo: Joi.number().required(),
+        sqFt: Joi.number().required(),
+        price: Joi.number().required(),
+        img: Joi.object().optional(), // Adjust according to how you handle images
     });
     return schema.validate(property, { abortEarly: false });
 }

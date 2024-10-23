@@ -1,5 +1,5 @@
 const { Property } = require('../models/Property');
-const upload = require('../image_uploader');
+const upload = require('./image_uploader');
 const express = require("express");
 const router = express.Router();
 
@@ -25,56 +25,66 @@ router.get("/:id/edit", async (req, res) => {
 /**************************************************************************************************/
 // Get all properties
 router.get("/", async (req, res) => {
-  const properties = await Property.find().sort("name");
-  res.render("properties", { properties });
+  try {
+    const properties = await Property.find().sort("name");
+    res.render("properties", { properties, errors: [] }); // Ensure errors is passed
+  } catch (err) {
+    console.error(err); // Log error for debugging
+    res.status(500).send("An error occurred while fetching properties");
+  }
 });
 
 /**************************************************************************************************/
 // Get property by ID
 router.get("/:id", async (req, res) => {
-  const property = await Property.findById(req.params.id);
-  if (!property) {
-    return res.status(404).send("The property is not available");
+  try {
+    const property = await Property.findById(req.params.id);
+    if (!property) {
+      return res.status(404).send("The property is not available");
+    }
+    res.render("view_property", { property, errors: [] }); // Ensure errors is passed
+  } catch (err) {
+    res.status(500).send("An error occurred while fetching the property");
   }
-  res.render("view_property", { property });
 });
 
 /**************************************************************************************************/
 // Adding property
-router.post("/", upload.single('img'), async (req, res) => {
-  if (!req.file) {
-    return res.status(400).send('Property image is required..');
+router.post("/", upload.fields([{ name: 'img' }, { name: 'img_author' }]), async (req, res) => {
+  if (!req.files['img'] || !req.files['img_author']) {
+    return res.status(400).send('Both property image and author image are required.');
   }
-
-  const propertyImgPath = req.file.path.replace(/\\/g, '/'); // Normalize backslashes to forward slashes
 
   let property = new Property({
     category: req.body.category,
     name: req.body.name,
     location: req.body.location,
     author: req.body.author,
+    img_author: {
+      path: req.files['img_author'][0].path.replace(/\\/g, '/'), // Normalize path
+      contentType: req.files['img_author'][0].mimetype
+    },
     BedsNo: req.body.BedsNo,
     BathsNo: req.body.BathsNo,
     sqFt: req.body.sqFt,
     price: req.body.price,
     img: {
-      data: req.file.buffer, // Save the image buffer if you need it
-      contentType: req.file.mimetype // Save the image MIME type
+      path: req.files['img'][0].path.replace(/\\/g, '/'), // Normalize path
+      contentType: req.files['img'][0].mimetype
     },
-    // If you need to handle an author image, you can do it similarly here
   });
 
   try {
     property = await property.save();
     res.status(201).redirect("/properties");
   } catch (error) {
-    res.status(500).send('An error occurred');
+    res.status(500).send('An error occurred while saving the property');
   }
 });
 
 /**************************************************************************************************/
 // Updating property
-router.put("/:id", upload.single('img'), async (req, res) => {
+router.put("/:id", upload.fields([{ name: 'img' }, { name: 'img_author' }]), async (req, res) => {
   let property = await Property.findById(req.params.id);
   if (!property) return res.status(404).send('The property with the given ID was not found');
 
@@ -90,16 +100,28 @@ router.put("/:id", upload.single('img'), async (req, res) => {
     price: req.body.price,
   };
 
-  if (req.file) {
+  if (req.files['img']) {
     updatedData.img = {
-      data: req.file.buffer,
-      contentType: req.file.mimetype
+      path: req.files['img'][0].path.replace(/\\/g, '/'),
+      contentType: req.files['img'][0].mimetype
+    };
+  }
+
+  if (req.files['img_author']) {
+    updatedData.img_author = {
+      path: req.files['img_author'][0].path.replace(/\\/g, '/'),
+      contentType: req.files['img_author'][0].mimetype
     };
   }
 
   // Update the property in the database
-  property = await Property.findByIdAndUpdate(req.params.id, updatedData, { new: true });
-  res.status(200).send(property);
+  try {
+    property = await Property.findByIdAndUpdate(req.params.id, updatedData, { new: true });
+    res.status(200).send(property);
+  } catch (error) {
+    console.error("Error updating property:", error);
+    res.status(500).json(['Failed to update property']);
+  }
 });
 
 /**************************************************************************************************/

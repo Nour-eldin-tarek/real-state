@@ -59,9 +59,9 @@ router.post("/", upload.single('img'), async (req, res) => {
         city: req.body.city,
         propertyNo: req.body.propertyNo,
         img: {
-            data: req.file.buffer, // Save the image buffer if needed
-            contentType: req.file.mimetype // Save the image MIME type
-        }
+            path: req.files['img'][0].path.replace(/\\/g, '/'), // Normalize path
+            contentType: req.files['img'][0].mimetype
+        },
     });
 
     try {
@@ -94,8 +94,8 @@ router.put("/:id", upload.single('img'), async (req, res) => {
 
     if (req.file) {
         updatedData.img = {
-            data: req.file.buffer,
-            contentType: req.file.mimetype
+            path: req.files['img'][0].path.replace(/\\/g, '/'),
+            contentType: req.files['img'][0].mimetype
         };
     }
 

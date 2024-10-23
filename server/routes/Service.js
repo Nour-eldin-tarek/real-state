@@ -44,65 +44,68 @@ router.get("/:id", async (req, res) => {
     }
 });
 
-// Adding service
+// Adding a property
 router.post("/", upload.single('img'), async (req, res) => {
-    const { error } = validateService(req.body);
-    if (error) {
-        const errorMessages = error.details.map((err) => err.message);
-        return res.status(400).render('add_service', { errors: errorMessages, service: req.body });
-    }
-
     if (!req.file) {
-        return res.status(400).send('Service image is required.');
+        return res.status(400).send('Property image is required.');
     }
 
-    const serviceImgPath = req.file.path.replace(/\\/g, '/'); // Normalize backslashes to forward slashes
+    const propertyImgPath = req.file.path.replace(/\\/g, '/'); // Normalize backslashes to forward slashes
 
-    let service = new Service({
-        description: req.body.description,
+    const property = new Property({
+        category: req.body.category,
+        name: req.body.name,
+        location: req.body.location,
+        author: req.body.author,
+        BedsNo: req.body.BedsNo,
+        BathsNo: req.body.BathsNo,
+        sqFt: req.body.sqFt,
+        price: req.body.price,
         img: {
-            path: serviceImgPath, // Save the image path
-            contentType: req.file.mimetype, // Save the image MIME type
+            path: propertyImgPath, // Save the image path
+            contentType: req.file.mimetype // Save the image MIME type
         },
     });
 
     try {
-        service = await service.save();
-        res.status(201).redirect("/services");
+        await property.save();
+        res.status(201).redirect("/properties");
     } catch (error) {
-        res.status(500).send('An error occurred while saving the service.');
+        console.error(error);
+        res.status(500).send('An error occurred while saving the property');
     }
 });
 
-// Updating service
+// Updating a property
 router.put("/:id", upload.single('img'), async (req, res) => {
-    let service = await Service.findById(req.params.id);
-    if (!service) return res.status(404).send('The service with the given ID was not found.');
-
-    const { error } = validateService(req.body);
-    if (error) {
-        const errorMessages = error.details.map((err) => err.message);
-        return res.status(400).render('edit_service', { errors: errorMessages, service: req.body });
-    }
-
-    // Prepare the updated data
-    const updatedData = {
-        description: req.body.description,
-    };
-
-    if (req.file) {
-        updatedData.img = {
-            path: req.file.path.replace(/\\/g, '/'), // Save the updated image path
-            contentType: req.file.mimetype,
-        };
-    }
-
-    // Update the service in the database
     try {
-        service = await Service.findByIdAndUpdate(req.params.id, updatedData, { new: true });
-        res.status(200).send(service);
+        const property = await Property.findById(req.params.id);
+        if (!property) return res.status(404).send('The property with the given ID was not found');
+
+        const updatedData = {
+            category: req.body.category,
+            name: req.body.name,
+            location: req.body.location,
+            author: req.body.author,
+            BedsNo: req.body.BedsNo,
+            BathsNo: req.body.BathsNo,
+            sqFt: req.body.sqFt,
+            price: req.body.price,
+        };
+
+        if (req.file) {
+            updatedData.img = {
+                path: req.file.path.replace(/\\/g, '/'), // Save the updated image path
+                contentType: req.file.mimetype,
+            };
+        }
+
+        // Update the property in the database
+        const updatedProperty = await Property.findByIdAndUpdate(req.params.id, updatedData, { new: true });
+        res.status(200).send(updatedProperty);
     } catch (error) {
-        res.status(500).send("An error occurred while updating the service.");
+        console.error(error);
+        res.status(500).send('An error occurred while updating the property');
     }
 });
 

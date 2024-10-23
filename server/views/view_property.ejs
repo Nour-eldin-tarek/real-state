@@ -4,65 +4,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Courses</title>
+    <title>View Property</title>
     <link rel="stylesheet" href="/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="/adminlte/dist/css/adminlte.min.css">
 </head>
 
 <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
-    <!--begin::App Wrapper-->
     <div class="app-wrapper">
-        <!--begin::Header-->
         <nav class="app-header navbar navbar-expand bg-body" style="min-height: 50px;">
-            <div class="container-fluid">
-                <!-- You can add navigation links here -->
-            </div>
+            <div class="container-fluid"></div>
         </nav>
-        <!--end::Header-->
 
-        <!--begin::Sidebar-->
         <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
             <div class="sidebar-brand">
-                <a href="/courses" class="brand-link">
-                    <span class="brand-text fw-light">AdminLTE 4</span>
+                <a href="/properties" class="brand-link">
+                    <span class="brand-text fw-light">Admin Properties</span>
                 </a>
             </div>
+
             <div class="sidebar-wrapper">
                 <nav class="mt-2">
-                    <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
+                    <ul class="nav sidebar-menu flex-column" role="menu" data-accordion="false">
                         <li class="nav-item">
-                            <a href="/courses" class="nav-link">
-                                <i class="nav-icon bi bi-speedometer"></i>
-                                <p>
-                                    Courses
-                                    <i class="nav-arrow bi bi-chevron-right"></i>
-                                </p>
+                            <a href="/properties" class="nav-link">
+                                <i class="nav-icon bi bi-house"></i>
+                                <p>Properties</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/courses/new" class="nav-link">
-                                <i class="nav-icon bi bi-palette"></i>
-                                <p>Add Course</p>
+                            <a href="/services" class="nav-link">
+                                <i class="nav-icon bi bi-gear"></i>
+                                <p>Services</p>
                             </a>
                         </li>
                     </ul>
                 </nav>
             </div>
         </aside>
-        <!--end::Sidebar-->
 
-        <!--begin::App Main-->
         <main class="app-main">
             <div class="app-content-header">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-6">
-                            <h3 class="mb-0">Course Details</h3>
+                            <h3 class="mb-0">View Property</h3>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-end">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Course Details</li>
+                                <li class="breadcrumb-item active" aria-current="page">View Property</li>
                             </ol>
                         </div>
                     </div>
@@ -75,38 +65,39 @@
                         <div class="col-md-6">
                             <div class="card card-primary card-outline mb-4">
                                 <div class="card-header">
-                                    <div class="card-title"><%= course.name %></div>
+                                    <div class="card-title"><%= property.name %></div>
                                 </div>
                                 <div class="card-body">
-                                    <div class="mb-3">
-                                        <p><strong>Name:</strong> <%= course.name %></p>
-                                        <p><strong>Description:</strong> <%= course.desc %></p>
-                                        <p><strong>Tags:</strong> <%= course.tags.join(', ') %></p>
-                                        <p><strong>Price:</strong> <%= course.price %></p>
-                                        <p><strong>Author:</strong> <%= course.author.name %></p>
-                                        <a href="/courses" class="btn btn-primary">Back to Courses</a>
-                                    </div>
+                                    <p><strong>Category:</strong> <%= property.category %></p>
+                                    <p><strong>Location:</strong> <%= property.location %></p>
+                                    <p><strong>Author:</strong> <%= property.author %></p>
+                                    <% if (property.img_author && property.img_author.path) { %>
+                                        <h5>Image Author:</h5>
+                                        <img src="/<%= property.img_author.path %>" alt="Image Author" style="width: 100%; height: auto;">
+                                    <% } else { %>
+                                        <p>No image author available</p>
+                                    <% } %>
+                                    <p><strong>Beds:</strong> <%= property.BedsNo %></p>
+                                    <p><strong>Baths:</strong> <%= property.BathsNo %></p>
+                                    <p><strong>Square Feet:</strong> <%= property.sqFt %></p>
+                                    <p><strong>Price:</strong> $<%= property.price.toLocaleString() %></p>
+                                    <p><strong>Date Listed:</strong> <%= new Date(property.createdAt).toLocaleDateString() %></p>
+
+                                    <% if (property.img && property.img.path) { %>
+                                        <img src="/<%= property.img.path %>" alt="Property Image" style="width: 100%; height: auto;">
+                                    <% } else { %>
+                                        <p>No property image available</p>
+                                    <% } %>
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--end::App Content-->
         </main>
-        <!--end::App Main-->
-
-        <!--begin::Footer-->
-        <footer class="app-footer">
-            <div class="float-end d-none d-sm-inline">Anything you want</div>
-            <strong>
-                Copyright &copy; 2014-2024&nbsp;
-                <a href="https://adminlte.io" class="text-decoration-none">AdminLTE.io</a>.
-            </strong>
-            All rights reserved.
-        </footer>
-        <!--end::Footer-->
     </div>
+
     <script src="/adminlte/dist/js/adminlte.min.js"></script>
 </body>
 
