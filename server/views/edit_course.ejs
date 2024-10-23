@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin courses</title>
+    <link rel="stylesheet" href="/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="/adminlte/dist/css/adminlte.min.css">
+</head>
+
+<body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
+    <!--begin::App Wrapper-->
+    <div class="app-wrapper">
+        <!--begin::Header-->
+        <nav class="app-header navbar navbar-expand bg-body"  style="min-height: 50px;"> 
+            <!--begin::Container-->
+            <div class="container-fluid">
+                <!--begin::Start Navbar Links-->
+ 
+                <!--end::End Navbar Links-->
+            </div>
+            <!--end::Container-->
+        </nav>
+
+
+        <!--end::Header--> <!--begin::Sidebar-->
+        <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
+            <!--begin::Sidebar Brand-->
+            <div class="sidebar-brand">
+                <!--begin::Brand Link-->
+                <a href="/courses" class="brand-link">
+                    <span class="brand-text fw-light">AdminLTE 4</span> <!--end::Brand Text-->
+                </a>
+                <!--end::Brand Link-->
+            </div>
+            <!--end::Sidebar Brand--> <!--begin::Sidebar Wrapper-->
+            <div class="sidebar-wrapper">
+                <nav class="mt-2">
+                    <!--begin::Sidebar Menu-->
+                    <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu"
+                        data-accordion="false">
+                        <li class="nav-item">
+                            <a href="/courses" class="nav-link">
+                                <i class="nav-icon bi bi-speedometer"></i>
+                                <p>
+                                    courses
+                                    <i class="nav-arrow bi bi-chevron-right"></i>
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/courses/new" class="nav-link">
+                                <i class="nav-icon bi bi-palette"></i>
+                                <p>add course</p>
+                            </a>
+                        </li>
+                    </ul>
+                    <!--end::Sidebar Menu-->
+                </nav>
+            </div>
+            <!--end::Sidebar Wrapper-->
+        </aside>
+
+
+        <!--end::Sidebar--> <!--begin::App Main-->
+        <main class="app-main">
+            <!--begin::App Content Header-->
+            <div class="app-content-header">
+                <!--begin::Container-->
+                <div class="container-fluid">
+                    <!--begin::Row-->
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h3 class="mb-0">Edit Course</h3>
+                        </div>
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-end">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                   Edit Course
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="app-content">
+                <!--begin::Container-->
+                <div class="container-fluid">
+                    <!--begin::Row-->
+                    <div class="row g-4">
+                        <!--begin::Col-->
+                        <div class="col-md-6">
+                            <!--begin::Quick Example-->
+                            <div class="card card-primary card-outline mb-4">
+                                <div class="card-header">
+                                    <div class="card-title">Quick Example</div>
+                                </div>
+                                <!--end::Header--> <!--begin::Form-->
+
+                                <form id="editCourseForm" enctype="multipart/form-data">
+                                    <div class="card-body">
+                                        <% if (errors.length> 0) { %>
+                                            <div class="alert alert-danger">
+                                                <ul>
+                                                    <% errors.forEach(function(error) { %>
+                                                        <li>
+                                                            <%= error %>
+                                                        </li>
+                                                        <% }) %>
+                                                </ul>
+                                            </div>
+                                            <% } %>
+                                                <div class="mb-3">
+                                                    <div class="form-group">
+                                                        <label for="name">Course Name</label>
+                                                        <input type="text" class="form-control" id="name" name="name"
+                                                            required minlength="5" value="<%= course.name %>">
+                                                    </div>
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <div class="form-group">
+                                                        <label for="desc">Description</label>
+                                                        <textarea class="form-control" id="desc" name="desc" cols="4" rows="6" required
+                                                            minlength="15"><%= course.desc %></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <div class="form-group">
+                                                        <label for="tags">Tags</label>
+                                                        <input type="text" class="form-control" id="tags" name="tags"
+                                                            placeholder="Comma-separated tags" required
+                                                            value="<%= course.tags && Array.isArray(course.tags) ? course.tags.join(', ') : '' %>">
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <div class="form-group">
+                                                        <label for="price">Price</label>
+                                                        <input type="number" class="form-control" id="price"
+                                                            name="price" required value="<%= course.price %>">
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <div class="form-group">
+                                                        <label for="authorId">Author</label>
+                                                        <select class="form-control" id="authorId" name="authorId"
+                                                            required>
+                                                            <option value="">Select Author</option>
+                                                            <% authors.forEach(author=> { %>
+                                                                <option value="<%= author._id %>"
+                                                                    <%=String(author._id)===String(course.author._id)
+                                                                    ? 'selected' : '' %>
+                                                                    ><%= author.name %>
+                                                                </option>
+                                                                <% }) %>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <div class="form-group">
+                                                        <label for="courseCover">Course Cover</label>
+                                                        <input type="file" class="form-control-file" id="courseCover"
+                                                            name="courseCover">
+                                                        <img src="/<%= course.courseCover %>" alt="Course Cover"
+                                                            style="width: 150px; margin-top: 10px;">
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <div class="form-group">
+                                                        <label for="isPublished">Published</label>
+                                                        <select class="form-control" id="isPublished" name="isPublished"
+                                                            required>
+                                                            <option value="true" <%=course.isPublished ? "selected" : ""
+                                                                %>>Yes</option>
+                                                            <option value="false" <%=!course.isPublished ? "selected"
+                                                                : "" %>>No</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <button type="submit" class="btn btn-primary">Update Course</button>
+                                                </div>
+
+                                    </div>
+                                </form>
+                                <!--end::Form-->
+                            </div>
+                        </div>
+                        <!--end::Col--> <!--begin::Col-->
+                    </div>
+                    <!--end::Row-->
+                </div>
+                <!--end::Container-->
+            </div>
+            <!--end::App Content-->
+        </main>
+
+
+        <!--end::App Main--> <!--begin::Footer-->
+        <footer class="app-footer">
+            <div class="float-end d-none d-sm-inline">Anything you want</div>
+            <strong>
+                Copyright &copy; 2014-2024&nbsp;
+                <a href="https://adminlte.io" class="text-decoration-none">AdminLTE.io</a>.
+            </strong>
+            All rights reserved.
+        </footer>
+    </div>
+    <script src="/adminlte/dist/js/adminlte.min.js"></script>
+
+
+    <script>
+        document.getElementById("editCourseForm").addEventListener("submit", async function (event) {
+            event.preventDefault();  // Prevent the default form submission
+
+            const form = document.getElementById("editCourseForm");
+            const formData = new FormData(form);
+            const courseId = "<%= course._id %>";
+
+            try {
+                const response = await fetch(`/courses/${courseId}`, {
+                    method: 'PUT',
+                    body: formData
+                });
+
+                if (response.ok) {
+                    alert("Course updated successfully");
+                    window.location.href = "/courses";  // Redirect to courses list
+                } else {
+                    const errorData = await response.json();
+                    alert("Failed to update course: " + errorData.join(", "));
+                }
+            } catch (error) {
+                console.error("Error:", error);
+                alert("An error occurred while updating the course");
+            }
+        });
+    </script>
+
+</body>
+
+</html>
