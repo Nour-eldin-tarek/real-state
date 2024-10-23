@@ -1,0 +1,201 @@
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+
+const Property = () => {
+    const { id } = useParams(); // Get course ID from URL params
+    const [course, setCourse] = useState({});
+    const [authors, setAuthors] = useState([]);
+    const [errors, setErrors] = useState([]);
+    const [isEditing, setIsEditing] = useState(false);
+
+    // Fetch authors and course details if editing
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const authorsResponse = await fetch('/authors');
+                const authorsData = await authorsResponse.json();
+                setAuthors(authorsData);
+
+                if (id) {
+                    const courseResponse = await fetch(`/courses/${id}`);
+                    const courseData = await courseResponse.json();
+                    setCourse(courseData);
+                    setIsEditing(true);
+                }
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        };
+
+        fetchData();
+    }, [id]);
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+        const url = isEditing ? `/courses/${id}` : '/courses';
+        const method = isEditing ? 'PUT' : 'POST';
+
+        try {
+            const response = await fetch(url, {
+                method,
+                body: formData,
+            });
+
+            if (response.ok) {
+                alert(`${isEditing ? 'Course updated' : 'Course added'} successfully`);
+                window.location.href = "/courses";
+            } else {
+                const errorData = await response.json();
+                setErrors(errorData);
+            }
+        } catch (error) {
+            console.error("Error:", error);
+            alert("An error occurred while processing the request");
+        }
+    };
+
+    return (
+        <div className="app-wrapper">
+            <nav className="app-header navbar navbar-expand bg-body" style={{ minHeight: '50px' }}>
+                <div className="container-fluid"></div>
+            </nav>
+
+            <aside className="app-sidebar bg-body-secondary shadow">
+                <div className="sidebar-brand">
+                    <a href="/courses" className="brand-link">
+                        <span className="brand-text fw-light">AdminLTE 4</span>
+                    </a>
+                </div>
+                <div className="sidebar-wrapper">
+                    <nav className="mt-2">
+                        <ul className="nav sidebar-menu flex-column">
+                            <li className="nav-item">
+                                <a href="/courses" className="nav-link">
+                                    <i className="nav-icon bi bi-speedometer"></i>
+                                    <p>
+                                        Courses
+                                        <i className="nav-arrow bi bi-chevron-right"></i>
+                                    </p>
+                                </a>
+                            </li>
+                            <li className="nav-item">
+                                <a href="/courses/new" className="nav-link">
+                                    <i className="nav-icon bi bi-palette"></i>
+                                    <p>Add Course</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </aside>
+
+            <main className="app-main">
+                <div className="app-content-header">
+                    <div className="container-fluid">
+                        <div className="row">
+                            <div className="col-sm-6">
+                                <h3 className="mb-0">{isEditing ? 'Edit Course' : 'Add Course'}</h3>
+                            </div>
+                            <div className="col-sm-6">
+                                <ol className="breadcrumb float-sm-end">
+                                    <li className="breadcrumb-item"><a href="#">Home</a></li>
+                                    <li className="breadcrumb-item active" aria-current="page">{isEditing ? 'Edit Course' : 'Add Course'}</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="app-content">
+                    <div className="container-fluid">
+                        <div className="row g-4">
+                            <div className="col-md-6">
+                                <div className="card card-primary card-outline mb-4">
+                                    <div className="card-header">
+                                        <div className="card-title">{isEditing ? 'Edit Course' : 'Adding Course'}</div>
+                                    </div>
+                                    <form onSubmit={handleSubmit} encType="multipart/form-data">
+                                        <div className="card-body">
+                                            {errors.length > 0 && (
+                                                <div className="alert alert-danger">
+                                                    <ul>
+                                                        {errors.map((error, index) => (
+                                                            <li key={index}>{error}</li>
+                                                        ))}
+                                                    </ul>
+                                                </div>
+                                            )}
+                                            <div className="mb-3">
+                                                <label htmlFor="name">Course Name</label>
+                                                <input type="text" className="form-control" id="name" name="name"
+                                                    required minLength="5" defaultValue={course.name || ''} />
+                                            </div>
+
+                                            <div className="mb-3">
+                                                <label htmlFor="desc">Description</label>
+                                                <textarea className="form-control" id="desc" name="desc" cols="4" rows="6" 
+                                                    required minLength="15" defaultValue={course.desc || ''}></textarea>
+                                            </div>
+
+                                            <div className="mb-3">
+                                                <label htmlFor="tags">Tags</label>
+                                                <input type="text" className="form-control" id="tags" name="tags"
+                                                    placeholder="Comma-separated tags" required
+                                                    defaultValue={course.tags && Array.isArray(course.tags) ? course.tags.join(', ') : ''} />
+                                            </div>
+
+                                            <div className="mb-3">
+                                                <label htmlFor="price">Price</label>
+                                                <input type="number" className="form-control" id="price"
+                                                    name="price" required defaultValue={course.price || ''} />
+                                            </div>
+
+                                            <div className="mb-3">
+                                                <label htmlFor="authorId">Author</label>
+                                                <select className="form-control" id="authorId" name="authorId" required>
+                                                    <option value="">Select Author</option>
+                                                    {authors.map(author => (
+                                                        <option key={author._id} value={author._id}
+                                                            selected={String(author._id) === String(course.authorId)} >
+                                                            {author.name}
+                                                        </option>
+                                                    ))}
+                                                </select>
+                                            </div>
+
+                                            <div className="mb-3">
+                                                <label htmlFor="courseCover">Course Cover</label>
+                                                <input type="file" className="form-control-file" id="courseCover"
+                                                    name="courseCover" />
+                                                {isEditing && course.courseCover && (
+                                                    <img src={`/${course.courseCover}`} alt="Course Cover" 
+                                                        style={{ width: '150px', marginTop: '10px' }} />
+                                                )}
+                                            </div>
+
+                                            <div className="mb-3">
+                                                <label htmlFor="isPublished">Published</label>
+                                                <select className="form-control" id="isPublished" name="isPublished" required>
+                                                    <option value="true" selected={course.isPublished === 'true'}>Yes</option>
+                                                    <option value="false" selected={course.isPublished === 'false'}>No</option>
+                                                </select>
+                                            </div>
+
+                                            <div className="mb-3">
+                                                <button type="submit" className="btn btn-primary">
+                                                    {isEditing ? 'Update Course' : 'Add Course'}
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <footer className="app-footer">
+                <div className="float-end d-none d-sm-inline">Anything you want</div>
+                <strong>
+                    Copyright &copy; 2014-2024&

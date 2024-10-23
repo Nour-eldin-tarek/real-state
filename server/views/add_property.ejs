@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Properties</title>
+    <link rel="stylesheet" href="/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="/adminlte/dist/css/adminlte.min.css">
+</head>
+
+<body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
+    <!--begin::App Wrapper-->
+    <div class="app-wrapper">
+        <!--begin::Header-->
+        <nav class="app-header navbar navbar-expand bg-body" style="min-height: 50px;">
+            <div class="container-fluid">
+                <!-- Add any header elements here -->
+            </div>
+        </nav>
+        <!--end::Header--> 
+
+        <!--begin::Sidebar-->
+        <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
+            <div class="sidebar-brand">
+                <a href="/properties" class="brand-link">
+                    <span class="brand-text fw-light">AdminLTE 4</span>
+                </a>
+            </div>
+            <div class="sidebar-wrapper">
+                <nav class="mt-2">
+                    <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
+                        <li class="nav-item">
+                            <a href="/properties" class="nav-link">
+                                <i class="nav-icon bi bi-speedometer"></i>
+                                <p>
+                                    Properties
+                                    <i class="nav-arrow bi bi-chevron-right"></i>
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/properties/new" class="nav-link">
+                                <i class="nav-icon bi bi-plus-circle"></i>
+                                <p>Add Property</p>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <!--end::Sidebar--> 
+
+        <!--begin::App Main-->
+        <main class="app-main">
+            <div class="app-content-header">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h3 class="mb-0">Adding Property</h3>
+                        </div>
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-end">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    Adding Property
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="app-content">
+                <div class="container-fluid">
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="card card-primary card-outline mb-4">
+                                <div class="card-header">
+                                    <div class="card-title">Adding Property</div>
+                                </div>
+                                <form action="/properties" method="POST" enctype="multipart/form-data">
+                                    <div class="card-body">
+
+                                        <!-- Display Error Messages -->
+                                        <% if (errors.length > 0) { %>
+                                            <div class="alert alert-danger">
+                                                <ul>
+                                                    <% errors.forEach(function(error) { %>
+                                                        <li><%= error %></li>
+                                                    <% }) %>
+                                                </ul>
+                                            </div>
+                                        <% } %>
+                                        <div class="mb-3">
+                                            <div class="form-group">
+                                                <label for="category">Category</label>
+                                                <input type="text" class="form-control" id="category" name="category"
+                                                    required minlength="3" value="<%= property.category || '' %>">
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <div class="form-group">
+                                                <label for="city">City</label>
+                                                <input type="text" class="form-control" id="city" name="city"
+                                                    required minlength="3" value="<%= property.city || '' %>">
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <div class="form-group">
+                                                <label for="propertyNo">Property No</label>
+                                                <input type="text" class="form-control" id="propertyNo" name="propertyNo"
+                                                    required minlength="1" value="<%= property.propertyNo || '' %>">
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <div class="form-group">
+                                                <label for="img">Property Image</label>
+                                                <input type="file" class="form-control-file" id="img" name="img">
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <button type="submit" class="btn btn-primary">Add Property</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <!--end::Form-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end::App Content-->
+        </main>
+        <!--end::App Main--> 
+
+        <!--begin::Footer-->
+        <footer class="app-footer">
+            <div class="float-end d-none d-sm-inline">Anything you want</div>
+            <strong>
+                Copyright &copy; 2014-2024&nbsp;
+                <a href="https://adminlte.io" class="text-decoration-none">AdminLTE.io</a>.
+            </strong>
+            All rights reserved.
+        </footer>
+    </div>
+    <script src="/adminlte/dist/js/adminlte.min.js"></script>
+</body>
+
+</html>
