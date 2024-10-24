@@ -4,26 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Services</title>
+    <title>Edit Image</title>
     <link rel="stylesheet" href="/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="/adminlte/dist/css/adminlte.min.css">
 </head>
 
 <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
-    <!--begin::App Wrapper-->
     <div class="app-wrapper">
-        <!--begin::Header-->
         <nav class="app-header navbar navbar-expand bg-body" style="min-height: 50px;">
-            <div class="container-fluid">
-                <!-- You can add navigation links here -->
-            </div>
+            <div class="container-fluid"></div>
         </nav>
-        <!--end::Header-->
 
-        <!--begin::Sidebar-->
         <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
             <div class="sidebar-brand">
-                <a href="/Services" class="brand-link">
+                <a href="/Images" class="brand-link">
                     <span class="brand-text fw-light">Dashboard</span>
                 </a>
             </div>
@@ -55,56 +49,64 @@
                 </nav>
             </div>
         </aside>
-        <!--end::Sidebar-->
 
-        <!--begin::App Main-->
         <main class="app-main">
             <div class="app-content-header">
                 <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <h3 class="mb-0">Service Details</h3>
-                        </div>
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-end">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Service Details</li>
-                            </ol>
-                        </div>
-                    </div>
+                    <h3 class="mb-0">Edit Image</h3>
                 </div>
             </div>
 
             <div class="app-content">
                 <div class="container-fluid">
-                    <div class="row g-4">
-                        <div class="col-md-6">
-                            <div class="card card-primary card-outline mb-4">
-                                <div class="card-header">
-                                    <div class="card-title"><%= service.description %></div>
-                                </div>
-                                <div class="card-body">
-                                    <div class="mb-3">
-                                        <% if (service.img && service.img.path) { %>
-                                            <img src="/<%= service.img.path %>" alt="Service Image" style="width: 100%; height: auto;" />
-                                        <% } else { %>
-                                            <p>No image available</p>
-                                        <% } %>
-                                        
-                                        <p><strong>Description:</strong> <%= service.description %></p>
-                                        <p><strong>Date:</strong> <%= new Date(service.date).toLocaleDateString() %></p>
-                                        <a href="/services" class="btn btn-primary">Back to Services</a>
+                    <div class="card card-primary card-outline mb-4">
+                        <div class="card-header">
+                            <div class="card-title">Edit Image Details</div>
+                        </div>
+                        <form id="editImageForm" enctype="multipart/form-data" method="POST" action="/images/<%= image._id %>/update">
+                            <div class="card-body">
+                                <% if (errors.length > 0) { %>
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            <% errors.forEach(function(error) { %>
+                                                <li><%= error %></li>
+                                            <% }) %>
+                                        </ul>
                                     </div>
+                                <% } %>
+
+                                <div class="mb-3">
+                                    <label for="category">Category</label>
+                                    <input type="text" class="form-control" id="category" name="category" value="<%= image.category %>" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="city">City</label>
+                                    <input type="text" class="form-control" id="city" name="city" value="<%= image.city %>" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="propertyNo">Property No</label>
+                                    <input type="text" class="form-control" id="propertyNo" name="propertyNo" value="<%= image.propertyNo %>" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="img">Image</label><br>
+                                    <img src="<%= image.img.path %>" alt="Image" style="width: 100px; height: auto; margin-bottom: 10px;">
+                                    <input type="file" class="form-control-file" id="img" name="img">
+                                </div>
+
+                                <div class="mb-3">
+                                    <button type="submit" class="btn btn-primary">Update Image</button>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
-            <!--end::App Content-->
         </main>
-        <!--end::App Main-->
     </div>
+
     <script src="/adminlte/dist/js/adminlte.min.js"></script>
 </body>
 

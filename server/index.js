@@ -5,6 +5,8 @@ const cors = require('cors');
 
 const Service = require("./routes/Service");
 const Property = require("./routes/Property");
+const Images = require("./routes/Images");
+const Blog = require("./routes/blogs");
 
 const express = require("express");
 const app = express();
@@ -34,6 +36,8 @@ app.use(cors());
 /**************************************************************************************************/
 app.use("/services", Service);
 app.use("/Properties", Property);
+app.use("/Images", Images);
+app.use("/blogs", Blog);
 /**************************************************************************************************/
 
 // Serve AdminLTE files

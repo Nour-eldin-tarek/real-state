@@ -34,9 +34,12 @@ const Images = mongoose.model("Images", imagesSchema);
 function validateImages(images) {
     const schema = Joi.object({
         category: Joi.string().min(3).max(100).required(),
-        city: Joi.string().min(2).max(100).required(),
-        propertyNo: Joi.string().min(1).max(100).required(),
-        imgPath: Joi.string().required(),  // Path to the image file
+        city: Joi.string().min(2).max(100).optional(), // Make city optional if required is false in schema
+        propertyNo: Joi.string().min(1).max(100).optional(), // Make propertyNo optional
+        img: Joi.object({
+            path: Joi.string().required(), // Validate image path
+            contentType: Joi.string().required(), // Validate content type
+        }).required(),
     });
     return schema.validate(images, { abortEarly: false });
 }

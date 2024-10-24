@@ -1,5 +1,5 @@
-const { Images, handleImagesValidation } = require('../models/Images'); // Adjust the path as necessary
-const upload = require('../image_uploader');
+const { Images, validateImages } = require('../models/Images'); // Adjust the path as necessary
+const upload = require('./image_uploader');
 const express = require("express");
 const router = express.Router();
 
@@ -25,61 +25,85 @@ router.get("/:id/edit", async (req, res) => {
 /**************************************************************************************************/
 // Get all images
 router.get("/", async (req, res) => {
-    const images = await Images.find().sort("category");
-    res.render("images", { images }); // Render the images html (ejs)
+    try {
+        const images = await Images.find().sort("category");
+        res.render("images", { images }); // Render the images html (ejs)
+    } catch (error) {
+        res.status(500).send("An error occurred while fetching images");
+    }
 });
 
 /**************************************************************************************************/
 // Get image by ID
 router.get("/:id", async (req, res) => {
-    const image = await Images.findById(req.params.id);
-    if (!image) {
-        return res.status(404).send("The image is not available");
+    try {
+        const image = await Images.findById(req.params.id);
+        if (!image) {
+            return res.status(404).send("The image is not available");
+        }
+        res.render("view_image", { image });
+    } catch (error) {
+        res.status(500).send("An error occurred while fetching the image");
     }
-    res.render("view_image", { image });
 });
 
 /**************************************************************************************************/
 // Adding image
 router.post("/", upload.single('img'), async (req, res) => {
-    const { error } = handleImagesValidation(req.body);
+    const { error } = validateImages({
+        category: req.body.category,
+        city: req.body.city,
+        propertyNo: req.body.propertyNo,
+        img: {
+            path: req.file ? req.file.path.replace(/\\/g, '/') : undefined,
+            contentType: req.file ? req.file.mimetype : undefined,
+        },
+    });
+
     if (error) {
         const errorMessages = error.details.map((err) => err.message);
         return res.status(400).render('add_image', { errors: errorMessages, image: req.body });
     }
 
     if (!req.file) {
-        return res.status(400).send('Image is required..');
+        return res.status(400).send('Image is required.');
     }
 
-    const imagePath = req.file.path.replace(/\\/g, '/'); // Normalize backslashes to forward slashes
-
-    let image = new Images({
+    const image = new Images({
         category: req.body.category,
         city: req.body.city,
         propertyNo: req.body.propertyNo,
         img: {
-            path: req.files['img'][0].path.replace(/\\/g, '/'), // Normalize path
-            contentType: req.files['img'][0].mimetype
+            path: req.file.path.replace(/\\/g, '/'),
+            contentType: req.file.mimetype
         },
     });
 
     try {
-        image = await image.save();
+        await image.save();
         res.status(201).redirect("/images");
     } catch (error) {
-        res.status(500).send('An error occurred');
+        res.status(500).send('An error occurred while saving the image.');
     }
 });
 
 /**************************************************************************************************/
 // Updating image
-router.put("/:id", upload.single('img'), async (req, res) => {
+router.post("/:id/update", upload.single('img'), async (req, res) => {
     let image = await Images.findById(req.params.id);
     if (!image) return res.status(404).send('The image with the given ID was not found');
 
     // Validate the image
-    const { error } = handleImagesValidation(req.body);
+    const { error } = validateImages({
+        category: req.body.category,
+        city: req.body.city,
+        propertyNo: req.body.propertyNo,
+        img: req.file ? {
+            path: req.file.path.replace(/\\/g, '/'),
+            contentType: req.file.mimetype
+        } : image.img // Keep the existing image data if no new file is provided
+    });
+
     if (error) {
         const errorMessages = error.details.map((err) => err.message);
         return res.status(400).render('edit_image', { errors: errorMessages, image: req.body });
@@ -94,14 +118,14 @@ router.put("/:id", upload.single('img'), async (req, res) => {
 
     if (req.file) {
         updatedData.img = {
-            path: req.files['img'][0].path.replace(/\\/g, '/'),
-            contentType: req.files['img'][0].mimetype
+            path: req.file.path.replace(/\\/g, '/'),
+            contentType: req.file.mimetype
         };
     }
 
     // Update the image in the database
     image = await Images.findByIdAndUpdate(req.params.id, updatedData, { new: true });
-    res.status(200).send(image);
+    res.status(200).redirect("/images"); // Redirect to the images page after updating
 });
 
 /**************************************************************************************************/

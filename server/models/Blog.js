@@ -25,10 +25,9 @@ const blogSchema = new mongoose.Schema({
         default: Date.now,
     },
     img: {
-        data: Buffer,
-        contentType: String,
-        required: true,
-    }
+        path: { type: String, required: true },
+        contentType: { type: String, required: true },
+    },
 });
 
 // Blog model
